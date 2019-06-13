@@ -7,6 +7,12 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.shoppingcart.dao.AccountDAO;
+import org.shoppingcart.dao.OrderDAO;
+import org.shoppingcart.dao.ProductDAO;
+import org.shoppingcart.dao.impl.AccountDAOImpl;
+import org.shoppingcart.dao.impl.OrderDAOImpl;
+import org.shoppingcart.dao.impl.ProductDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -125,5 +131,20 @@ public class ApplicationContextConfig {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		LOGEVENT.info("ApplicationContextConfig -> getTransactionManager -> " + transactionManager);
 		return transactionManager;
+	}
+
+	@Bean(name = "accountDAO")
+	public AccountDAO getAccountDAO() {
+		return new AccountDAOImpl();
+	}
+
+	@Bean(name = "productDAO")
+	public ProductDAO getProductDAO() {
+		return new ProductDAOImpl();
+	}
+
+	@Bean(name = "orderDAO")
+	public OrderDAO getOrderDAO() {
+		return new OrderDAOImpl();
 	}
 }
