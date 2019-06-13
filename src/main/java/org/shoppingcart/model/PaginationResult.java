@@ -19,7 +19,7 @@ public class PaginationResult<E> {
 
 	// @page: 1,2, ..
 	@SuppressWarnings("unchecked")
-	public PaginationResult(Query<E> query, int page, int maxResult, int maxNavigationpage) {
+	public PaginationResult(Query<E> query, int page, int maxResult, int maxNavigationPage) {
 		final int pageIndex = page - 1 < 0 ? 0 : page - 1;
 
 		int fromRecordIndex = pageIndex * maxResult;
@@ -54,10 +54,10 @@ public class PaginationResult<E> {
 			this.list = results;
 			this.maxResult = maxResult;
 			this.totalPages = (this.totalRecords / this.maxResult) + 1;
-			this.maxNavigationPage = maxNavigationpage;
+			this.maxNavigationPage = maxNavigationPage;
 
 			if (maxNavigationPage < totalPages) {
-				this.maxNavigationPage = maxNavigationpage;
+				this.maxNavigationPage = maxNavigationPage;
 			}
 
 			this.calcNavigationPages();
