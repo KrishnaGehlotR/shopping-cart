@@ -1,0 +1,17 @@
+package org.shoppingcart.dao;
+
+import java.util.List;
+
+import org.shoppingcart.model.CartInfo;
+import org.shoppingcart.model.OrderDetailInfo;
+import org.shoppingcart.model.OrderInfo;
+import org.shoppingcart.model.PaginationResult;
+
+public interface OrderDAO {
+
+	public void saveOrder(CartInfo cartInfo);
+	
+	public PaginationResult<OrderInfo> listOrderInfo(int page,int maxResult, int maxNivagationPage);
+	
+	public List<OrderDetailInfo> listOrderDetailInfo(String orderId);
+}
