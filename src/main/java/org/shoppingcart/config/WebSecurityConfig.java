@@ -1,5 +1,7 @@
 package org.shoppingcart.config;
 
+import org.apache.log4j.Logger;
+import org.shoppingcart.authentication.MyDBAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,13 +14,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//	@Autowired
-//	MyDBAuthenticationService myDBAuthenticationService;
+	private static final Logger LOGEVENT = Logger.getLogger(SpringWebAppInitializerConfig.class);
 
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) {
+	MyDBAuthenticationService myDBAuthenticationService;
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// For User in database
-//		auth.userDetailsService(myDBAuthenticationService);
+		auth.userDetailsService(myDBAuthenticationService);
+		LOGEVENT.info("WebSecurityConfig -> configureGlobal");
 	}
 
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -49,5 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Config for Logout Page
 				// (Go to home page).
 				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
+
+		LOGEVENT.info("WebSecurityConfig -> configure");
 	}
 }

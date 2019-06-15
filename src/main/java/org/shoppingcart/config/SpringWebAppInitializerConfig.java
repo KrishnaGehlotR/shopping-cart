@@ -4,6 +4,8 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+
+import org.apache.log4j.Logger;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -16,6 +18,8 @@ import org.springframework.web.servlet.DispatcherServlet;
  * @author Krishna Gehlot R
  */
 public class SpringWebAppInitializerConfig implements WebApplicationInitializer {
+
+	private static final Logger LOGEVENT = Logger.getLogger(SpringWebAppInitializerConfig.class);
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
@@ -36,5 +40,6 @@ public class SpringWebAppInitializerConfig implements WebApplicationInitializer 
 		filter.setInitParameter("encoding", "UTF-8");
 		filter.setInitParameter("forceEncoding", "true");
 		filter.addMappingForUrlPatterns(null, true, "/**");
+		LOGEVENT.info("SpringWebAppInitializerConfig -> onStartup");
 	}
 }
