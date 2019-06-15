@@ -43,7 +43,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Krishna Gehlot R
  */
 @Configuration
-@ComponentScan("org.shoppingcart.*")
+@ComponentScan("org.shoppingcart")
 @EnableTransactionManagement
 // Load to Environment
 @PropertySource("classpath:hibernate-cfg.properties")
