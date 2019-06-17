@@ -1,5 +1,7 @@
 package org.shoppingcart.dao.impl;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,6 +10,8 @@ import org.shoppingcart.dao.AccountDAO;
 import org.shoppingcart.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 
+//Transactional for Hibernate
+@Transactional
 public class AccountDAOImpl implements AccountDAO {
 
 	@Autowired

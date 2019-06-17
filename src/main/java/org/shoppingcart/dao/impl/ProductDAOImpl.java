@@ -2,6 +2,8 @@ package org.shoppingcart.dao.impl;
 
 import java.util.Date;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +15,8 @@ import org.shoppingcart.model.PaginationResult;
 import org.shoppingcart.model.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+//Transactional for Hibernate
+@Transactional
 public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
@@ -45,10 +49,10 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,
 			String likeName) {
-		String sql = "Select new " + ProductInfo.class.getName() + "(prod.code, prod.name, prod.price)"
-				+ Product.class.getName() + "prod";
+		String sql = "Select new " + ProductInfo.class.getName() + " (prod.code, prod.name, prod.price) "
+				+ Product.class.getName() + " prod ";
 		if (likeName != null && likeName.length() > 0) {
-			sql += "Where lower(prod.name) like: likeName";
+			sql += "Where lower(prod.name) like: likeName ";
 		}
 		sql += "order by prod.createDate desc";
 

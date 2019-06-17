@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,6 +24,8 @@ import org.shoppingcart.model.OrderInfo;
 import org.shoppingcart.model.PaginationResult;
 import org.springframework.beans.factory.annotation.Autowired;
 
+//Transactional for Hibernate
+@Transactional
 public class OrderDAOImpl implements OrderDAO {
 
 	@Autowired
@@ -32,7 +36,7 @@ public class OrderDAOImpl implements OrderDAO {
 
 	@SuppressWarnings("rawtypes")
 	private int getMaxOrderNum() {
-		String sql = "Select max(o.orderNum) from " + Order.class.getName() + "o";
+		String sql = "Select max(ord.orderNum) from " + Order.class.getName() + " ord";
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(sql);
 		Integer value = (Integer) query.uniqueResult();
