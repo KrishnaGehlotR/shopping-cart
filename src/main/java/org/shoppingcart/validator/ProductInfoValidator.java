@@ -4,10 +4,13 @@ import org.shoppingcart.dao.ProductDAO;
 import org.shoppingcart.entity.Product;
 import org.shoppingcart.model.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+// @Component:As a Bean.
+@Component
 public class ProductInfoValidator implements Validator {
 
 	@Autowired
