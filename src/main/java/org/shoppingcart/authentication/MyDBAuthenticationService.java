@@ -2,6 +2,8 @@ package org.shoppingcart.authentication;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+import org.shoppingcart.config.ApplicationContextConfig;
 import org.shoppingcart.dao.AccountDAO;
 import org.shoppingcart.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MyDBAuthenticationService implements UserDetailsService {
+	
+	private static final Logger LOGEVENT = Logger.getLogger(ApplicationContextConfig.class);
 
 	@Autowired
 	private AccountDAO accountDAO;
@@ -40,6 +46,7 @@ public class MyDBAuthenticationService implements UserDetailsService {
 
 		UserDetails userDetails = (UserDetails) new User(account.getUserName(), account.getPassword(), enabled,
 				accountNonExpired, credentialsNonExpired, accountNonLocked, grantList);
+		LOGEVENT.info("MyDBAuthenticationService -> loadUserByUsername");
 		return userDetails;
 	}
 }
