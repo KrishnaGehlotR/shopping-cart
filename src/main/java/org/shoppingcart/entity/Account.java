@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Account")
+@Table(name = "account")
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = 741815838741238857L;
@@ -20,7 +20,7 @@ public class Account implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "orderId", length = 20, nullable = false)
+	@Column(name = "orderid", length = 20, nullable = false)
 	private String orderId;
 	
 	@Column(name = "username", length = 20, nullable = false)

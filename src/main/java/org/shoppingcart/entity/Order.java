@@ -18,28 +18,28 @@ public class Order implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "orderId", length = 50)
+	@Column(name = "orderid", length = 50)
 	private String orderId;
 
-	@Column(name = "orderDate", nullable = false)
+	@Column(name = "orderdate", nullable = false)
 	private Date orderDate;
 
-	@Column(name = "orderNum", nullable = false)
+	@Column(name = "ordernum", nullable = false)
 	private int orderNum;
 
 	@Column(name = "amount", nullable = false)
 	private double amount;
 
-	@Column(name = "customerName", length = 255, nullable = false)
+	@Column(name = "customername", length = 255, nullable = false)
 	private String customerName;
 
-	@Column(name = "customerAddress", length = 255, nullable = false)
+	@Column(name = "customeraddress", length = 255, nullable = false)
 	private String customerAddress;
 
-	@Column(name = "customerEmail", length = 255, nullable = false)
+	@Column(name = "customeremail", length = 255, nullable = false)
 	private String customerEmail;
 
-	@Column(name = "customerPhone", length = 128, nullable = false)
+	@Column(name = "customerphone", length = 128, nullable = false)
 	private String customerPhone;
 
 	/**

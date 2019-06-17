@@ -18,7 +18,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 3490789768232224348L;
 
 	@Id
-	@Column(name = "productId", length = 20, nullable = false)
+	@Column(name = "productid", length = 20, nullable = false)
 	private String productId;
 
 	@Column(name = "code", length = 20, nullable = false)
