@@ -73,14 +73,14 @@ public class OrderDAOImpl implements OrderDAO {
 		for (CartLineInfo lineInfo : cartLines) {
 			OrderDetail orderDetail = new OrderDetail();
 			orderDetail.setOrderDetailId(UUID.randomUUID().toString());
-			orderDetail.setOrder(order);
+			orderDetail.setOrderId(order);
 			orderDetail.setAmount(lineInfo.getAmount());
 			orderDetail.setPrice(lineInfo.getProductInfo().getPrice());
 			orderDetail.setQuantity(lineInfo.getQuantity());
 
 			String code = lineInfo.getProductInfo().getCode();
 			Product product = this.productDAO.findProduct(code);
-			orderDetail.setProduct(product);
+			orderDetail.setProductId(product);
 
 			session.persist(orderDetail);
 		}

@@ -20,11 +20,11 @@ public class Account implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "orderid", length = 20, nullable = false)
-	private String orderId;
+	@Column(name = "accountId", length = 20, nullable = false)
+	private String accountId;
 	
 	@Column(name = "username", length = 20, nullable = false)
-	private String userName;
+	private String username;
 
 	@Column(name = "password", length = 20, nullable = false)
 	private String password;
@@ -36,31 +36,31 @@ public class Account implements Serializable {
 	private String userRole;
 
 	/**
-	 * @return the orderId
+	 * @return the accountId
 	 */
-	public String getOrderId() {
-		return orderId;
+	public String getAccountId() {
+		return accountId;
 	}
 
 	/**
-	 * @param orderId the orderId to set
+	 * @param accountId the accountId to set
 	 */
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 
 	/**
 	 * @return the userName
 	 */
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
 	/**
 	 * @param userName the userName to set
 	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	/**
@@ -107,6 +107,6 @@ public class Account implements Serializable {
 
 	@Override
 	public String toString() {
-		return "[" + this.userName + "," + this.password + "," + this.userRole + "]";
+		return "[" + this.username + "," + this.password + "," + this.userRole + "]";
 	}
 }

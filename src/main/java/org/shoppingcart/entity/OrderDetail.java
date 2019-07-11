@@ -21,16 +21,16 @@ public class OrderDetail implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "orderdetailid", length = 50, nullable = false)
+	@Column(name = "orderDetailId", length = 50, nullable = false)
 	private String orderDetailId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(name = "order_detail_ord_fk"))
-	private Order order;
+	@JoinColumn(name = "orderId", nullable = false, foreignKey = @ForeignKey(name = "order_detail_ord_fk"))
+	private Order orderId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(name = "order_detail_prod_fk"))
-	private Product product;
+	@JoinColumn(name = "productId", nullable = false, foreignKey = @ForeignKey(name = "order_detail_prod_fk"))
+	private Product productId;
 
 	@Column(name = "quantity", nullable = false)
 	private int quantity;
@@ -56,38 +56,38 @@ public class OrderDetail implements Serializable {
 	}
 
 	/**
-	 * @return the order
-	 */
-	public Order getOrder() {
-		return order;
-	}
-
-	/**
-	 * @param order the order to set
-	 */
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-
-	/**
-	 * @return the product
-	 */
-	public Product getProduct() {
-		return product;
-	}
-
-	/**
-	 * @param product the product to set
-	 */
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	/**
 	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
+	}
+
+	/**
+	 * @return the orderId
+	 */
+	public Order getOrderId() {
+		return orderId;
+	}
+
+	/**
+	 * @param orderId the orderId to set
+	 */
+	public void setOrderId(Order orderId) {
+		this.orderId = orderId;
+	}
+
+	/**
+	 * @return the productId
+	 */
+	public Product getProductId() {
+		return productId;
+	}
+
+	/**
+	 * @param productId the productId to set
+	 */
+	public void setProductId(Product productId) {
+		this.productId = productId;
 	}
 
 	/**

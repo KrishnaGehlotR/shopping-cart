@@ -44,7 +44,7 @@ public class MyDBAuthenticationService implements UserDetailsService {
 		boolean credentialsNonExpired = true;
 		boolean accountNonLocked = true;
 
-		UserDetails userDetails = (UserDetails) new User(account.getUserName(), account.getPassword(), enabled,
+		UserDetails userDetails = (UserDetails) new User(account.getUsername(), account.getPassword(), enabled,
 				accountNonExpired, credentialsNonExpired, accountNonLocked, grantList);
 		LOGEVENT.info("MyDBAuthenticationService -> loadUserByUsername");
 		return userDetails;
