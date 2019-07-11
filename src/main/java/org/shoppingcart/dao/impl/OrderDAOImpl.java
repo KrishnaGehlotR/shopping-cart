@@ -112,6 +112,7 @@ public class OrderDAOImpl implements OrderDAO {
 		return (Order) criteria.uniqueResult();
 	}
 
+	@Override
 	public OrderInfo getOrderInfo(String orderId) {
 		Order order = this.findOrder(orderId);
 		if (order == null) {
