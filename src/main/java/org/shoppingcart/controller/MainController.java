@@ -109,7 +109,7 @@ public class MainController {
 		return "redirect:/shoppingCart";
 	}
 
-	@RequestMapping("shoppingCartRemoveProduct")
+	@RequestMapping("/shoppingCartRemoveProduct")
 	public String removeProductHandler(HttpServletRequest request, Model model,
 			@RequestParam(value = "code", defaultValue = "") String code) {
 		Product product = null;
@@ -144,6 +144,7 @@ public class MainController {
 	}
 
 	// GET: Show cart
+	@RequestMapping(value = { "/shoppingCart" }, method = RequestMethod.GET)
 	public String shoppingCartHandler(HttpServletRequest request, Model model) {
 		CartInfo myCart = Utils.getCartInSession(request);
 		model.addAttribute("cartForm", myCart);

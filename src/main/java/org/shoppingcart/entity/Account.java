@@ -19,11 +19,11 @@ public class Account implements Serializable {
 	public static final String ROLE_EMPLOYEE = "EMPLOYEE";
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "accountId", length = 20, nullable = false)
 	private String accountId;
-	
-	@Column(name = "username", length = 20, nullable = false)
+
+	@Column(name = "username", length = 20, unique = true, nullable = false)
 	private String username;
 
 	@Column(name = "password", length = 20, nullable = false)
