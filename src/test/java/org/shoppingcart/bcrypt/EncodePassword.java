@@ -8,7 +8,8 @@ public class EncodePassword {
 	public static void main(String[] args) {
 		String password="123456";
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		String encode = encoder.encode(password);
-		System.out.println("Encoded: "+encode);
+		String encodedPassword = encoder.encode(password);
+		System.out.println("Encoded Password: "+encodedPassword);
+		System.out.println("Password Length: "+encodedPassword.length());
 	}
 }
