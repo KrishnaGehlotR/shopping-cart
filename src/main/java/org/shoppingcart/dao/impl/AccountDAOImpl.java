@@ -31,7 +31,10 @@ public class AccountDAOImpl implements AccountDAO {
 		criteriaQuery.where(criteriaBuilder.equal(root.get("username"), username));
 		criteriaQuery.select(root);
 		Query<Account> query = session.createQuery(criteriaQuery);
-		LOGEVENT.info("AccountDAOImpl -> findAccount -> resultList.size: " + query.getResultList().size());
+
+		if (query.getResultList().isEmpty()) {
+			LOGEVENT.error("AccountDAOImpl -> findAccount -> resultList: " + query.getResultList().size());
+		}
 		return query.getSingleResult();
 	}
 }
