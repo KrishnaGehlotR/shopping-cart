@@ -23,7 +23,7 @@
 			<li>User Name: ${pageContext.request.userPrincipal.name}</li>
 			<li>Role:
 				<ul>
-					<c:forEach items="$userDetails.authorities" var="auth">
+					<c:forEach items="${userDetails.authorities}" var="auth">
 						<li>${auth.authority}</li>
 					</c:forEach>
 				</ul>
