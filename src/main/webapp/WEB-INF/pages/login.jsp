@@ -31,8 +31,8 @@
 			method="POST">
 			<table>
 				<tr>
-					<td>User Name *</td>
-					<td><input type="text" name="userName" /></td>
+					<td>Username *</td>
+					<td><input type="text" name="username" /></td>
 				</tr>
 				<tr>
 					<td>Password *</td>
