@@ -3,7 +3,6 @@ package org.shoppingcart.authentication;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
-import org.shoppingcart.config.ApplicationContextConfig;
 import org.shoppingcart.dao.AccountDAO;
 import org.shoppingcart.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyDBAuthenticationService implements UserDetailsService {
 	
-	private static final Logger LOGEVENT = Logger.getLogger(ApplicationContextConfig.class);
+	private static final Logger LOGEVENT = Logger.getLogger(MyDBAuthenticationService.class);
 
 	@Autowired
 	private AccountDAO accountDAO;
