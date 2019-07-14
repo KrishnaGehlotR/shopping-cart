@@ -50,7 +50,7 @@ create table accounts (
     alter table orderdetails
         add constraint FK_ORDER_DETAIL_PROD
         foreign key (productId)
-        references products (code);
+        references products (productId);
  
 ---------------------------------------
 INSERT INTO accounts (accountId, username, password, active, userrole) 
