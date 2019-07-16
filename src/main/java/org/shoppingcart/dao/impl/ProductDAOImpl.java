@@ -49,7 +49,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,
 			String likeName) {
-		String sql = "Select new " + ProductInfo.class.getName() + " (prod.code, prod.name, prod.price) "
+		String sql = "Select new " + ProductInfo.class.getName() + " (prod.code, prod.name, prod.price) from "
 				+ Product.class.getName() + " prod ";
 		if (likeName != null && likeName.length() > 0) {
 			sql += "Where lower(prod.name) like: likeName ";
