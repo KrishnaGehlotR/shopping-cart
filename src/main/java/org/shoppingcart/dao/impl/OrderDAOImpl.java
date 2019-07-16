@@ -95,8 +95,8 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public PaginationResult<OrderInfo> listOrderInfo(int page, int maxResult, int maxNivagationPage) {
 		String sql = "Select new " + OrderInfo.class.getName()
-				+ " ord.id, ord.orderDate, ord.orderNum, ord.amount, ord.customerName, ord.customerAddress, ord.customerEmail, ord.customerPhone) from"
-				+ Order.class.getName() + "ord order by ord.orderNum desc";
+				+ " (ord.orderId, ord.orderDate, ord.orderNum, ord.amount, ord.customerName, ord.customerAddress, ord.customerEmail, ord.customerPhone) from "
+				+ Order.class.getName() + " ord";
 		Session session = this.sessionFactory.getCurrentSession();
 
 		Query query = session.createQuery(sql);
@@ -129,7 +129,7 @@ public class OrderDAOImpl implements OrderDAO {
 		String sql = "Select new " + OrderDetailInfo.class.getName()
 				+ "(ord.id, ord.productCode, ord.productName, ord.quantity, ord.price, ord.amount) from"
 				+ OrderDetail.class.getName() + " ord where ord.orderDetailId=:orderId";
-		
+
 		Session session = this.sessionFactory.getCurrentSession();
 		Query query = session.createQuery(sql);
 		query.setParameter("orderId", orderId);
