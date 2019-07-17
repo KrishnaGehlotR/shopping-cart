@@ -31,7 +31,7 @@
 			<th>Amount</th>
 			<th>View</th>
 		</tr>
-		<c:forEach items="$paginationResult.list" var="orderInfo">
+		<c:forEach items="${paginationResult.list}" var="orderInfo">
 			<tr>
 				<td>${orderInfo.orderNum}</td>
 				<td><fmt:formatDate value="${orderInfo.orderDate}"
