@@ -59,7 +59,7 @@
 
 			<tr>
 				<td>Upload Image</td>
-				<td><form:input type="file" path="fileData" /></td>
+				<td><form:input type="file" path="multipartFile" /></td>
 				<td></td>
 			</tr>
 
