@@ -33,17 +33,17 @@
 				varStatus="varStatus">
 				<div class="product-preview-container">
 					<ul>
-						<li><img class="product-image"
+						<li><img class="product-Image"
 							src="${pageContext.request.contextPath}/productImage?code=${cartLineInfo.productInfo.code}">
 						</li>
-						<li>Code: ${cartLineInfo.productInfo.name} <form:hidden
+						<li>Code: ${cartLineInfo.productInfo.code} <form:hidden
 								path="cartLines[${varStatus.index}].productInfo.code" />
 						</li>
 						<li>Name: ${cartLineInfo.productInfo.name}</li>
 						<li>Price: <span class="price"> <fmt:formatNumber
 									value="${cartLineInfo.productInfo.price}" type="currency" />
 						</span></li>
-						<li>Quantity: cartLines[${varStatus.index}].quantity</li>
+						<li>Quantity: <form:input path="cartLines[${varStatus.index}].quantity"/></li>
 						<li>Subtotal: <span class="subtotal"> <fmt:formatNumber
 									value="${cartLineInfo.amount}" type="currency" />
 						</span></li>

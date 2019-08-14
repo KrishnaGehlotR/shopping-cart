@@ -39,32 +39,7 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		return new ProductInfo(product.getCode(), product.getName(), product.getPrice());
 	}
-
-	@Override
-	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
-		return queryProducts(page, maxResult, maxNavigationPage, null);
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,
-			String likeName) {
-		String sql = "Select new " + ProductInfo.class.getName() + " (prod.code, prod.name, prod.price) from "
-				+ Product.class.getName() + " prod ";
-		if (likeName != null && likeName.length() > 0) {
-			sql += "Where lower(prod.name) like: likeName ";
-		}
-		sql += "order by prod.createDate desc";
-
-		Session session = sessionFactory.getCurrentSession();
-
-		Query query = session.createQuery(sql);
-		if (likeName != null && likeName.length() > 0) {
-			query.setParameter("likeName", "%" + likeName.toLowerCase() + "%");
-		}
-		return new PaginationResult<ProductInfo>(query, page, maxResult, maxNavigationPage);
-	}
-
+	
 	@Override
 	public void save(ProductInfo productInfo) {
 		String code = productInfo.getCode();
@@ -93,10 +68,39 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 
 		if (isNew) {
-			this.sessionFactory.getCurrentSession().persist(product);
+			try {
+				this.sessionFactory.getCurrentSession().persist(product);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		// If error in DB then Exceptions will be thrown out immediately
 		this.sessionFactory.getCurrentSession().flush();
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,
+			String likeName) {
+		String sql = "Select new " + ProductInfo.class.getName() + " (prod.code, prod.name, prod.price) from "
+				+ Product.class.getName() + " prod ";
+		if (likeName != null && likeName.length() > 0) {
+			sql += "Where lower(prod.name) like: likeName ";
+		}
+		sql += "order by prod.createDate desc";
+
+		Session session = sessionFactory.getCurrentSession();
+
+		Query query = session.createQuery(sql);
+		if (likeName != null && likeName.length() > 0) {
+			query.setParameter("likeName", "%" + likeName.toLowerCase() + "%");
+		}
+		return new PaginationResult<ProductInfo>(query, page, maxResult, maxNavigationPage);
+	}
+	
+	@Override
+	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
+		return queryProducts(page, maxResult, maxNavigationPage, null);
 	}
 }

@@ -26,11 +26,12 @@
 		<table style="text-align: left;">
 			<tr>
 				<td>Code *</td>
-				<td style="color: red;"><c:if
-						test="${not empty productForm.code}">
+				<td style="color: red;">
+					<c:if test="${not empty productForm.code}">
 						<form:hidden path="code" />
 						${productForm.code}
-					</c:if> <c:if test="${empty productForm.code}">
+					</c:if>
+					<c:if test="${empty productForm.code}">
 						<form:input path="code" />
 						<form:hidden path="NewProduct" />
 					</c:if></td>
