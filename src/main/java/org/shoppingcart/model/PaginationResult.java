@@ -23,7 +23,7 @@ public class PaginationResult<E> {
 		final int pageIndex = page - 1 < 0 ? 0 : page - 1;
 
 		int fromRecordIndex = pageIndex * maxResult;
-		int maxRecordIndex = fromRecordIndex * maxResult;
+		int maxRecordIndex = fromRecordIndex + maxResult;
 
 		ScrollableResults resultScroll = query.scroll(ScrollMode.SCROLL_INSENSITIVE);
 
