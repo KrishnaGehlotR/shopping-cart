@@ -137,7 +137,7 @@ public class MainController {
 			@ModelAttribute("cartForm") CartInfo cartForm) {
 
 		CartInfo cartInfo = Utils.getCartInSession(request);
-		cartInfo.updateQuantity(cartInfo);
+		cartInfo.updateQuantity(cartForm);
 
 		// Redirect to ShoppingCart page
 		return "redirect:/shoppingCart";
