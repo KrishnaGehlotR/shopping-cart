@@ -2,7 +2,6 @@ package org.shoppingcart.dao.impl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -52,10 +51,9 @@ public class OrderDAOImpl implements OrderDAO {
 	public void saveOrder(CartInfo cartInfo) {
 		Session session = sessionFactory.getCurrentSession();
 
-		int orderNum = this.getMaxOrderNum();
+		int orderNum = this.getMaxOrderNum() + 1;
 		Order order = new Order();
 
-		order.setOrderId(UUID.randomUUID().toString());
 		order.setOrderNum(orderNum);
 		order.setOrderDate(new Date());
 		order.setAmount(cartInfo.getAmountTotal());
@@ -72,7 +70,6 @@ public class OrderDAOImpl implements OrderDAO {
 
 		for (CartLineInfo lineInfo : cartLines) {
 			OrderDetail orderDetail = new OrderDetail();
-			orderDetail.setOrderDetailId(UUID.randomUUID().toString());
 			orderDetail.setOrderId(order);
 			orderDetail.setAmount(lineInfo.getAmount());
 			orderDetail.setPrice(lineInfo.getProductInfo().getPrice());

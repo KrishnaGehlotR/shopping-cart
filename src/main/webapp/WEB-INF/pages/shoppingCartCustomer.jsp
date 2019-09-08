@@ -19,7 +19,7 @@
 	<div class="page-title">Enter Customer Information</div>
 
 	<form:form method="POST" modelAttribute="customerForm"
-		action="${pageContext.request.contextPath }">
+		action="${pageContext.request.contextPath }/shoppingCartCustomer">
 
 		<table>
 			<tr>
@@ -39,13 +39,15 @@
 			</tr>
 			<tr>
 				<td>Address *</td>
-				<td><input type="submit" value="Submit"><input
-					type="reset" value="Reset"></td>
+				<td><form:input path="address" /></td>
+				<td><form:errors path="address" class="error-message" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><form:input path="address" /></td>
-				<td><form:errors path="address" class="error-message" /></td>
+				<td>
+					<input type="submit" value="Submit">
+					<input type="reset" value="Reset">
+				</td>
 			</tr>
 		</table>
 	</form:form>
