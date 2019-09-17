@@ -19,7 +19,7 @@ public class Account implements Serializable {
 	public static final String ROLE_EMPLOYEE = "EMPLOYEE";
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "accountId", length = 20, nullable = false)
 	private String accountId;
 

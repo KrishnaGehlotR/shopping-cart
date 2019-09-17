@@ -20,7 +20,7 @@ public class OrderDetail implements Serializable {
 	private static final long serialVersionUID = -3152259856785022168L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "orderDetailId", length = 50, nullable = false)
 	private String orderDetailId;
 

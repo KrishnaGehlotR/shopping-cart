@@ -135,19 +135,19 @@ public class ApplicationContextConfig {
 
 	@Bean(name = "accountDAO")
 	public AccountDAO getAccountDAO() {
-		LOGEVENT.info("ApplicationContextConfig -> getAccountDAO -> ");
+		LOGEVENT.info("ApplicationContextConfig -> getAccountDAO");
 		return new AccountDAOImpl();
 	}
 
 	@Bean(name = "productDAO")
 	public ProductDAO getProductDAO() {
-		LOGEVENT.info("ApplicationContextConfig -> getProductDAO -> ");
+		LOGEVENT.info("ApplicationContextConfig -> getProductDAO");
 		return new ProductDAOImpl();
 	}
 
 	@Bean(name = "orderDAO")
 	public OrderDAO getOrderDAO() {
-		LOGEVENT.info("ApplicationContextConfig -> getOrderDAO -> ");
+		LOGEVENT.info("ApplicationContextConfig -> getOrderDAO");
 		return new OrderDAOImpl();
 	}
 }
