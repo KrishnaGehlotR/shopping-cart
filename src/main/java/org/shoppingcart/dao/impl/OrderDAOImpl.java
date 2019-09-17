@@ -70,14 +70,14 @@ public class OrderDAOImpl implements OrderDAO {
 
 		for (CartLineInfo lineInfo : cartLines) {
 			OrderDetail orderDetail = new OrderDetail();
-			orderDetail.setOrderId(order);
+			orderDetail.setOrder(order);
 			orderDetail.setAmount(lineInfo.getAmount());
 			orderDetail.setPrice(lineInfo.getProductInfo().getPrice());
 			orderDetail.setQuantity(lineInfo.getQuantity());
 
 			String code = lineInfo.getProductInfo().getCode();
 			Product product = this.productDAO.findProduct(code);
-			orderDetail.setProductId(product);
+			orderDetail.setProduct(product);
 
 			session.persist(orderDetail);
 		}
@@ -124,8 +124,8 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public List<OrderDetailInfo> listOrderDetailInfo(String orderId) {
 		String sql = "Select new " + OrderDetailInfo.class.getName()
-				+ "(ord.id, ord.productCode, ord.productName, ord.quantity, ord.price, ord.amount) from"
-				+ OrderDetail.class.getName() + " ord where ord.orderDetailId=:orderId";
+				+ " (ord.id, ord.product.code, ord.product.name, ord.quantity, ord.price, ord.amount) from "
+				+ OrderDetail.class.getName() + " ord where ord.order.orderId=:orderId";
 
 		Session session = this.sessionFactory.getCurrentSession();
 		Query query = session.createQuery(sql);

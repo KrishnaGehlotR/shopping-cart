@@ -12,6 +12,28 @@ public class OrderDetailInfo {
 	public OrderDetailInfo() {
 		
 	}
+	
+	
+
+	/**
+	 * @param id
+	 * @param productCode
+	 * @param productName
+	 * @param quantity
+	 * @param price
+	 * @param amount
+	 */
+	public OrderDetailInfo(String id, String productCode, String productName, int quantity, double price,
+			double amount) {
+		this.id = id;
+		this.productCode = productCode;
+		this.productName = productName;
+		this.quantity = quantity;
+		this.price = price;
+		this.amount = amount;
+	}
+
+
 
 	/**
 	 * @return the id

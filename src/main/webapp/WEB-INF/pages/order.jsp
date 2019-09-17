@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Order</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
 	<jsp:include page="_header.jsp" />
@@ -19,10 +21,10 @@
 	<div class="customer-info-container">
 		<h3>Customer Information:</h3>
 		<ul>
-			<li>Name:${orderInfo.customerName}</li>
-			<li>Email:${orderInfo.customerEmail}</li>
-			<li>Phone:${orderInfo.customerPhone}</li>
-			<li>Address:${orderInfo.customerAddress}</li>
+			<li>Name: ${orderInfo.customerName}</li>
+			<li>Email: ${orderInfo.customerEmail}</li>
+			<li>Phone: ${orderInfo.customerPhone}</li>
+			<li>Address: ${orderInfo.customerAddress}</li>
 		</ul>
 		<h3>Order Summary:</h3>
 		<ul>
@@ -43,7 +45,7 @@
 		<c:forEach items="${orderInfo.details}" var="orderDetailInfo">
 			<tr>
 				<td>${orderDetailInfo.productCode}</td>
-				<td>${orderDetailInfo.prodcutName}</td>
+				<td>${orderDetailInfo.productName}</td>
 				<td>${orderDetailInfo.quantity}</td>
 				<td><fmt:formatNumber value="${orderDetailInfo.price}"
 						type="currency" /></td>

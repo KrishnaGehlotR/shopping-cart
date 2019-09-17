@@ -26,11 +26,11 @@ public class OrderDetail implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "orderId", nullable = false, foreignKey = @ForeignKey(name = "order_detail_ord_fk"))
-	private Order orderId;
+	private Order order;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productId", nullable = false, foreignKey = @ForeignKey(name = "order_detail_prod_fk"))
-	private Product productId;
+	private Product product;
 
 	@Column(name = "quantity", nullable = false)
 	private int quantity;
@@ -63,31 +63,31 @@ public class OrderDetail implements Serializable {
 	}
 
 	/**
-	 * @return the orderId
+	 * @return the order
 	 */
-	public Order getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		return order;
 	}
 
 	/**
-	 * @param orderId the orderId to set
+	 * @param order the order to set
 	 */
-	public void setOrderId(Order orderId) {
-		this.orderId = orderId;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	/**
-	 * @return the productId
+	 * @return the product
 	 */
-	public Product getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
 	/**
-	 * @param productId the productId to set
+	 * @param product the product to set
 	 */
-	public void setProductId(Product productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	/**
