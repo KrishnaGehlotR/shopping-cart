@@ -115,8 +115,8 @@ public class OrderDAOImpl implements OrderDAO {
 		if (order == null) {
 			return null;
 		}
-		return new OrderInfo(order.getOrderId(), order.getOrderDate(), order.getOrderNum(), order.getAmount(),
-				order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(),
+		return new OrderInfo(Integer.toString(order.getOrderId()), order.getOrderDate(), order.getOrderNum(),
+				order.getAmount(), order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(),
 				order.getCustomerPhone());
 	}
 

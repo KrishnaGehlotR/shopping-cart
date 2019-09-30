@@ -13,6 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "products")
 public class Product implements Serializable {
@@ -20,9 +23,9 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 3490789768232224348L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "productId", length = 20, nullable = false)
-	private String productId;
+	private Integer productId;
 
 	@Column(name = "code", length = 20, nullable = false)
 	private String code;
@@ -38,9 +41,15 @@ public class Product implements Serializable {
 	private byte[] image;
 
 	// For Sort.
+	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "createDate", nullable = false)
+	@Column(name = "createdate", nullable = false)
 	private Date createDate;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updatedate", nullable = false)
+	private Date updateDate;
 
 	public Product() {
 
@@ -49,14 +58,14 @@ public class Product implements Serializable {
 	/**
 	 * @return the productId
 	 */
-	public String getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
 
 	/**
 	 * @param productId the productId to set
 	 */
-	public void setProductId(String productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 
@@ -129,4 +138,19 @@ public class Product implements Serializable {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
+	/**
+	 * @return the updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate the updateDate to set
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
 }

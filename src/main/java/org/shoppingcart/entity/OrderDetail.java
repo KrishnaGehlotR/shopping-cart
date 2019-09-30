@@ -1,6 +1,7 @@
 package org.shoppingcart.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "orderdetails")
@@ -20,9 +26,9 @@ public class OrderDetail implements Serializable {
 	private static final long serialVersionUID = -3152259856785022168L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "orderDetailId", length = 50, nullable = false)
-	private String orderDetailId;
+	private Integer orderDetailId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "orderId", nullable = false, foreignKey = @ForeignKey(name = "order_detail_ord_fk"))
@@ -41,17 +47,27 @@ public class OrderDetail implements Serializable {
 	@Column(name = "amount", nullable = false)
 	private double amount;
 
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createdate", nullable = false)
+	private Date createDate;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updatedate", nullable = false)
+	private Date updateDate;
+
 	/**
 	 * @return the orderDetailId
 	 */
-	public String getOrderDetailId() {
+	public Integer getOrderDetailId() {
 		return orderDetailId;
 	}
 
 	/**
 	 * @param orderDetailId the orderDetailId to set
 	 */
-	public void setOrderDetailId(String orderDetailId) {
+	public void setOrderDetailId(Integer orderDetailId) {
 		this.orderDetailId = orderDetailId;
 	}
 
@@ -123,5 +139,33 @@ public class OrderDetail implements Serializable {
 	 */
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+	/**
+	 * @return the createDate
+	 */
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	/**
+	 * @param createDate the createDate to set
+	 */
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	/**
+	 * @return the updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate the updateDate to set
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

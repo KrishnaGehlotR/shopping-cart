@@ -1,7 +1,5 @@
 package org.shoppingcart.dao.impl;
 
-import java.util.Date;
-
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
@@ -53,7 +51,6 @@ public class ProductDAOImpl implements ProductDAO {
 		if (product == null) {
 			isNew = true;
 			product = new Product();
-			product.setCreateDate(new Date());
 		}
 
 		product.setCode(code);

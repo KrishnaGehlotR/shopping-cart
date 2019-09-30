@@ -68,7 +68,6 @@
 				<td>&nbsp;</td>
 				<td><input type="submit" value="Submit"><input
 					type="reset" value="Reset"></td>
-
 			</tr>
 
 		</table>

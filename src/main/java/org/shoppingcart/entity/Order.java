@@ -9,6 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "orders")
@@ -17,9 +22,9 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 8425514605540316080L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "orderId", length = 50)
-	private String orderId;
+	private Integer orderId;
 
 	@Column(name = "orderDate", nullable = false)
 	private Date orderDate;
@@ -42,17 +47,27 @@ public class Order implements Serializable {
 	@Column(name = "customerPhone", length = 128, nullable = false)
 	private String customerPhone;
 
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createdate", nullable = false)
+	private Date createDate;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updatedate", nullable = false)
+	private Date updateDate;
+
 	/**
 	 * @return the orderId
 	 */
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return orderId;
 	}
 
 	/**
 	 * @param orderId the orderId to set
 	 */
-	public void setOrderId(String orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 
@@ -153,4 +168,33 @@ public class Order implements Serializable {
 	public void setCustomerPhone(String customerPhone) {
 		this.customerPhone = customerPhone;
 	}
+
+	/**
+	 * @return the createDate
+	 */
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	/**
+	 * @param createDate the createDate to set
+	 */
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	/**
+	 * @return the updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate the updateDate to set
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
 }
