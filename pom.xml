@@ -18,7 +18,7 @@
 		<jstl.version>1.2</jstl.version>
 		<jsp-api.version>2.2</jsp-api.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
-		<springframework.version>5.1.7.RELEASE</springframework.version>
+		<springframework.version>5.2.20.RELEASE</springframework.version>
 		<spring-security.version>5.1.5.RELEASE</spring-security.version>
 		<hibernate.version>5.4.3.Final</hibernate.version>
 		<mysql.version>5.1.47</mysql.version>
